@@ -1,7 +1,8 @@
 <template>
   <div class="page-container" @click="focusField">
-    <EditableField ref="editableField" />
-    <v-btn class="position-fixed">Save</v-btn>
+    <EditableField />
+
+    <!-- do an if else here to render the note or add note mode -->
   </div>
 </template>
 
@@ -9,22 +10,15 @@
 import EditableField from "../components/EditableField.vue";
 
 export default {
+  props: [],
   components: {
-    EditableField
+    EditableField,
   },
-  methods: {
-    focusField() {
-      this.$refs.editableField.focusField();
-    }
-  }
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
 
-<style scoped>
-.position-fixed {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 1000;
-}
-</style>
+<style scoped></style>

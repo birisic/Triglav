@@ -66,7 +66,6 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-main style="height: 250px"></v-main>
 
     <!-- second navigation for notes - secondary -->
 
@@ -77,11 +76,24 @@
           <v-btn variant="text" icon="mdi-menu"></v-btn>
 
           <v-toolbar-title>Overview</v-toolbar-title>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
 
           <v-spacer></v-spacer>
         </v-toolbar>
 
-        <v-list :items="items" item-props lines="three">
+        <v-list
+          @click="clickList"
+          :search="search"
+          :items="items"
+          item-props
+          lines="three"
+        >
           <template v-slot:subtitle="{ subtitle }">
             <div v-html="subtitle"></div>
           </template>
@@ -97,8 +109,28 @@ export default {
 
   components: {},
 
+  computed: {
+    filter() {
+      return this.caseSensitive
+        ? (item, search, textKey) => item[textKey].indexOf(search) > -1
+        : undefined;
+    },
+  },
+
+  methods: {
+    clickList(item) {
+      console.log("yp");
+      console.log("Clicked item data:", item.srcElement);
+
+      const userNote = item.srcElement;
+      console.log(userNote);
+    },
+  },
+
   data: () => ({
     drawer: true,
+    search: null,
+    caseSensitive: true,
     rail: true,
     //open: ['Users'],
 
@@ -142,6 +174,24 @@ export default {
         title: "Birthday gift",
         subtitle:
           '<span class="text-primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Recipe to try",
+        subtitle:
+          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Recipe to try",
+        subtitle:
+          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Recipe to try",
+        subtitle:
+          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
       },
       { type: "divider", inset: true },
       {
