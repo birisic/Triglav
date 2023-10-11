@@ -70,7 +70,24 @@
 
     <!-- second navigation for notes - secondary -->
 
-    <v-navigation-drawer>Render notes view (overview)</v-navigation-drawer>
+    <!-- <v-navigation-drawer>Render notes view (overview)</v-navigation-drawer> -->
+    <v-navigation-drawer>
+      <v-card class="mx-auto" max-width="400">
+        <v-toolbar color="gray">
+          <v-btn variant="text" icon="mdi-menu"></v-btn>
+
+          <v-toolbar-title>Overview</v-toolbar-title>
+
+          <v-spacer></v-spacer>
+        </v-toolbar>
+
+        <v-list :items="items" item-props lines="three">
+          <template v-slot:subtitle="{ subtitle }">
+            <div v-html="subtitle"></div>
+          </template>
+        </v-list>
+      </v-card>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -101,6 +118,37 @@ export default {
       ["Design", "mdi-file-outline"],
       ["Quality Assurance", "mdi-update"],
       ["Engineering", "mdi-delete"],
+    ],
+
+    items: [
+      { type: "subheader", title: "Today" },
+      {
+        title: "Brunch this weekend?",
+        subtitle: `<span class="text-primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Summer BBQ",
+        subtitle: `<span class="text-primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Oui oui",
+        subtitle:
+          '<span class="text-primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Birthday gift",
+        subtitle:
+          '<span class="text-primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
+      },
+      { type: "divider", inset: true },
+      {
+        title: "Recipe to try",
+        subtitle:
+          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+      },
     ],
   }),
 };
