@@ -13,51 +13,65 @@
   </v-app-bar>
   <!-- left navigation (main) - primary -->
 
-  <v-navigation-drawer expand-on-hover rail>
-    <v-list>
-      <v-list-item prepend-icon="mdi-folder" title="Povio"></v-list-item>
-    </v-list>
-
-    <v-divider></v-divider>
-
-    <v-list density="compact" nav>
-      <v-list-group value="Support">
-        <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" title="Support"></v-list-item>
+  <div>
+    <v-navigation-drawer
+      v-model="drawer"
+      :rail="rail"
+      permanent
+      @click="rail = false"
+    >
+      <v-list-item
+        prepend-avatar="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/dwcghojy1momfcbkb7mi"
+        title="Povio"
+        nav
+      >
+        <template v-slot:append>
+          <v-btn
+            variant="text"
+            icon="mdi-chevron-left"
+            @click.stop="rail = !rail"
+          ></v-btn>
         </template>
+      </v-list-item>
 
-        <v-list-item
-          v-for="([title, icon], i) in supportArray"
-          :key="i"
-          :value="title"
-          :title="title"
-          :prepend-icon="icon"
-        ></v-list-item>
-      </v-list-group>
+      <v-divider></v-divider>
 
-      <v-list-group value="Delivery">
-        <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" title="Delivery"></v-list-item>
-        </template>
+      <v-list density="compact" nav>
+        <v-list-group value="Support">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="Support"></v-list-item>
+          </template>
 
-        <v-list-item
-          v-for="([title, icon], i) in deliveryArray"
-          :key="i"
-          :value="title"
-          :title="title"
-          :prepend-icon="icon"
-        ></v-list-item>
-      </v-list-group>
-    </v-list>
-  </v-navigation-drawer>
+          <v-list-item
+            v-for="([title, icon], i) in supportArray"
+            :key="i"
+            :value="title"
+            :title="title"
+            :prepend-icon="icon"
+          ></v-list-item>
+        </v-list-group>
 
-  <!-- second navigation for notes - secondary -->
-  <v-navigation-drawer>
-    <!-- <router-link to="/">Home</router-link> -->
-    <!-- <router-link to="/login">Login</router-link> -->
+        <v-list-group value="Delivery">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="Delivery"></v-list-item>
+          </template>
 
-    <h1>Here is the note view for a component</h1>
-  </v-navigation-drawer>
+          <v-list-item
+            v-for="([title, icon], i) in deliveryArray"
+            :key="i"
+            :value="title"
+            :title="title"
+            :prepend-icon="icon"
+          ></v-list-item>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main style="height: 250px"></v-main>
+
+    <!-- second navigation for notes - secondary -->
+
+    <v-navigation-drawer>Render notes view (overview)</v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -67,7 +81,10 @@ export default {
   components: {},
 
   data: () => ({
+    drawer: true,
+    rail: true,
     //open: ['Users'],
+
     admins: [
       ["Management", "mdi-account-multiple-outline"],
       ["Settings", "mdi-cog-outline"],
