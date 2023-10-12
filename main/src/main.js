@@ -5,12 +5,18 @@ import { loadFonts } from "./plugins/webfontloader";
 import { createRouter, createWebHistory } from "vue-router";
 import { createPinia } from "pinia"
 import HomePage from "./views/HomePage.vue";
+import ShowPostPage from "@/views/ShowPostPage.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: HomePage,
+  },
+  {
+    path: "/show-post/:id",
+    name: "ShowPost",
+    component: ShowPostPage,
   }
 ];
 

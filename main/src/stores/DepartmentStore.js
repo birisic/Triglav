@@ -18,8 +18,7 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
     },
 
     getNoteData: (state) => (noteId) => {
-      console.log(noteId);
-      return state.noteData.get(noteId);
+      return state.noteData.filter(note => note.id === parseInt(noteId));
     },
   },
   //actions - methods

@@ -1,13 +1,30 @@
 <template>
-    <NoteView/>
+    <NoteView :postId="id"/>
 </template>
 
 <script>
 import NoteView from "../components/NoteView.vue";
 export default {
   name: "ShowPost",
-  components: {
-    NoteView,
+  data() {
+      return {
+          id: undefined
+      }
   },
+  components: {
+      NoteView,
+  },
+  watch: {
+      '$route'() {
+          // Update the "id" property whenever the route changes
+          this.id = this.$route.params.id;
+          // console.log(this.id);
+      },
+  }
+
+    // created() {
+    //     this.id = this.$route.params.id;
+    //     console.log(this.id);
+    // },
 };
 </script>
