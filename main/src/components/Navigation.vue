@@ -156,10 +156,10 @@ export default {
       console.log("Clicked item data:", item.srcElement);
 
       const userNote = item.srcElement;
-      console.log(userNote);
+      console.log(item);
 
       // Update the data in the Pinia store by calling an action (e.g., updateData)
-      departmentStore.updateData(userNote);
+      departmentStore.getNoteData(userNote);
     },
     // handleToggleChildren(toggle) {
     //     // Update 'showChildren' in the parent component
