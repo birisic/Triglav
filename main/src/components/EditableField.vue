@@ -1,5 +1,4 @@
 <template>
-  <!-- new -->
   <div class="h-screen w-100">
     <textarea
       class="h-100 w-100"
@@ -8,28 +7,34 @@
       v-model="content"
       placeholder="Enter a note..."
     ></textarea>
+    <v-btn @click="handleClick" class="position-fixed">{{ buttonLabel }}</v-btn>
   </div>
-  <v-btn @click="saveUserNote" class="position-fixed">Save</v-btn>
-
-  <!-- pass the data to Navigation via state here -->
 </template>
 
 <script>
 export default {
-  computed: {},
-
-  components: {},
-
   data() {
     return {
-      content: "",
+      // Initialize with hardcoded text
+      content: "This is a hardcoded note.",
     };
   },
+  computed: {
+    buttonLabel() {
+      return this.content === "" ? "Add new" : "Save";
+    },
+  },
   methods: {
+    handleClick() {
+      if (this.content === "") {
+        console.log("post-id or any other post information");
+      } else {
+        this.saveUserNote();
+      }
+    },
     saveUserNote() {
       const noteContent = this.content; // Get the value from the textarea
       console.log("Note Content:", noteContent);
-      console.log("THE BUTTON IS TRUE");
     },
   },
 };
