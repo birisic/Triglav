@@ -117,11 +117,17 @@
 <script>
 import { useDepartmentStore } from "@/stores/DepartmentStore";
 import Department from "@/components/Department.vue";
+import noteData from "../data/noteData.json";
 
 export default {
   name: "Navigation",
 
   components: { Department },
+
+  created() {
+    this.items = noteData;
+    console.log(this.items);
+  },
 
   computed: {
     filter() {
@@ -143,11 +149,17 @@ export default {
 
   methods: {
     clickList(item) {
+      // Get the Pinia store instance
+      const departmentStore = useDepartmentStore();
+
       console.log("yp");
       console.log("Clicked item data:", item.srcElement);
 
       const userNote = item.srcElement;
       console.log(userNote);
+
+      // Update the data in the Pinia store by calling an action (e.g., updateData)
+      departmentStore.updateData(userNote);
     },
     // handleToggleChildren(toggle) {
     //     // Update 'showChildren' in the parent component
@@ -180,54 +192,8 @@ export default {
       ["Engineering", "mdi-delete"],
     ],
 
-    items: [
-      { type: "subheader", title: "Today" },
-      {
-        title: "Brunch this weekend?",
-        subtitle: `<span class="text-primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Summer BBQ",
-        subtitle: `<span class="text-primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Oui oui",
-        subtitle:
-          '<span class="text-primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Birthday gift",
-        subtitle:
-          '<span class="text-primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Recipe to try",
-        subtitle:
-          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Recipe to try",
-        subtitle:
-          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Recipe to try",
-        subtitle:
-          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-      },
-      { type: "divider", inset: true },
-      {
-        title: "Recipe to try",
-        subtitle:
-          '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-      },
-    ],
+    // we get the data from json
+    items: [],
   }),
 };
 </script>
