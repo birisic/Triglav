@@ -6,10 +6,17 @@
         <span class="text-blue-darken-2">{{
           post.author ? post.author : "Default author"
         }}</span>
-        <v-divider color="blue-darken-4" inset></v-divider>
-        <p>{{ post.desc ? post.desc : "Default desc" }}</p>
+
+        <p class="r-16">Last edited: 10.10.2023</p>
+
+        <v-divider color="blue-darken-4"></v-divider>
+        <div class="custom-margin">
+          <p>
+            {{ post.desc ? post.desc : "Default desc" }}
+          </p>
+        </div>
         <v-card-actions class="justify-end">
-          <v-btn color="blue-darken-2"> Edit note </v-btn>
+          <v-btn @click="editNote" color="blue-darken-2"> Edit note </v-btn>
         </v-card-actions>
       </v-col>
     </v-row>
@@ -55,8 +62,21 @@ export default {
       const departmentStore = useDepartmentStore();
       return departmentStore.getNoteData(id);
     },
+
+    editNote() {
+      console.log("edit");
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.custom-margin {
+  margin: 24px 12px 24px 12px;
+  text-align: justify;
+}
+
+.custom-right-margin {
+  margin-right: 12px;
+}
+</style>
