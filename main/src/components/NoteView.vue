@@ -18,34 +18,35 @@
 </template>
 <script>
 import { useDepartmentStore } from "@/stores/DepartmentStore";
-// import noteData from "@/data/noteData.json"
+import noteData from "@/data/noteData.json"
 export default {
   name: "NoteView",
   data() {
     return {
       post: {
-        title: "",
-        author: "",
-        desc: "",
+        title: noteData[0].title,
+        author: noteData[0].author,
+        desc: noteData[0].desc,
       },
     };
   },
   props: {
     postId: String,
   },
-  // created() {
-  //   if (!this.post){
-  //       let arrPost = this.getPosts(newPostId);
-  //       this.post = arrPost[0]
-  //       console.log(this.post)
-  //   }
-  // },
+  mounted() {
+      console.log(this.postId)
+      console.log(parseInt(this.postId))
+        let arrPost = this.getPosts(parseInt(this.postId));
+        this.post = arrPost[0]
+        console.log(this.post)
+  },
   watch: {
     postId(newPostId, oldPostId) {
-      if (newPostId !== undefined && oldPostId !== undefined) {
-        let arrPost = this.getPosts(newPostId);
+      // if (oldPostId !== undefined) {
+        let postId = newPostId ? newPostId : oldPostId;
+        let arrPost = this.getPosts(postId);
         this.post = arrPost[0];
-      }
+      // }
       console.log(this.post);
     },
   },

@@ -14,7 +14,10 @@ export default {
   components: {
       NoteView,
   },
-  watch: {
+  mounted() {
+      this.id = this.$route.params.id;
+  },
+    watch: {
       '$route'() {
           // Update the "id" property whenever the route changes
           this.id = this.$route.params.id;

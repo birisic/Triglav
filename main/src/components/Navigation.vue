@@ -87,7 +87,7 @@ export default {
 
   created() {
     this.items = noteData;
-    console.log(this.items);
+    // console.log(this.items);
   },
 
   computed: {

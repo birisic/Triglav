@@ -2,45 +2,99 @@
   {
     "id": 1,
     "parentId": null,
-    "name": "Software Engineering"
+    "name": "Delivery"
   },
   {
     "id": 2,
     "parentId": 1,
-    "name": "Frontend"
+    "name": "Engineering"
   },
   {
     "id": 3,
     "parentId": 2,
-    "name": "React",
-    "postIds": [1,2]
+    "name": "Frontend"
   },
   {
     "id": 4,
-    "parentId": 1,
-    "name": "Backend",
-    "postIds": [3,4]
+    "parentId": 2,
+    "name": "Backend"
   },
   {
     "id": 5,
-    "parentId": null,
-    "name": "Finances"
+    "parentId": 1,
+    "name": "Quality Assurance"
   },
   {
     "id": 6,
     "parentId": 5,
-    "name": "Money"
+    "name": "Testing"
   },
   {
     "id": 7,
-    "parentId": 6,
-    "name": "Sub-Sub Department 1",
+    "parentId": 1,
+    "name": "Design",
     "postIds": [5,6]
   },
   {
     "id": 8,
-    "parentId": 5,
-    "name": "Sub Department 2",
+    "parentId": 1,
+    "name": "Project Management",
     "postIds": [7,8]
+  },
+  {
+    "id": 9,
+    "parentId": null,
+    "name": "Support"
+  },
+  {
+    "id": 10,
+    "parentId": 9,
+    "name": "Recruiting"
+  },
+  {
+    "id": 11,
+    "parentId": 10,
+    "name": "Programmers",
+    "postIds": [7,8]
+  },
+  {
+    "id": 12,
+    "parentId": 9,
+    "name": "Finance"
+  },
+  {
+    "id": 13,
+    "parentId": 12,
+    "name": "Revenue",
+    "postIds": [7,8]
+  },
+  {
+    "id": 14,
+    "parentId": 9,
+    "name": "Sales"
+  },
+  {
+    "id": 15,
+    "parentId": 14,
+    "name": "Income",
+    "postIds": [7,8]
+  },
+  {
+    "id": 16,
+    "parentId": 9,
+    "name": "Legal",
+    "postIds": [7,8]
+  },
+  {
+    "id": 16,
+    "parentId": 3,
+    "name": "Vue.js",
+    "postIds": [1,2]
+  },
+  {
+    "id": 17,
+    "parentId": 4,
+    "name": "Laravel",
+    "postIds": [3,4]
   }
 ]
