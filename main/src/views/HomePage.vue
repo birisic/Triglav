@@ -24,7 +24,7 @@ export default {
       // Access the clickedUserNote from the Pinia
 
       console.log("WE ARE IN THE HOME PAGE");
-      return useDepartmentStore().noteData;
+      return useDepartmentStore().getNoteData;
     },
   },
 

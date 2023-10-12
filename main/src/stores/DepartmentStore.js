@@ -7,6 +7,7 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
   state: () => {
     return {
       departments,
+      noteData,
       showChildrenMap: new Map(),
     };
   },
@@ -14,6 +15,11 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
   getters: {
     getShowChildren: (state) => (departmentId) => {
       return state.showChildrenMap.get(departmentId);
+    },
+
+    getNoteData: (state) => (noteId) => {
+      console.log(noteId);
+      return state.noteData.get(noteId);
     },
   },
   //actions - methods
