@@ -47,4 +47,12 @@ export default {
   bottom: 20px;
   z-index: 1000;
 }
+
+textarea {
+  padding: 10px;
+}
+
+::placeholder {
+  font-size: 20px;
+}
 </style>
