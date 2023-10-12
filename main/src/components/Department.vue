@@ -1,15 +1,27 @@
 <template>
-    <v-list>
-<!--        <v-list-item>{{ department.name }}</v-list-item>-->
-        <v-list-item v-if="hasChildren">
+    <v-list density="compact" nav>
+        <v-list-item v-if="hasChildren" @click="toggleChildren()">
+            <v-icon
+                    size="medium"
+                    color="blue-lighten-2"
+                    :icon="showChildren ? 'mdi-folder-open' : 'mdi-folder'"
+                    class="text-center"
+            ></v-icon>
             {{ department.name }}
             <Department
-                v-for="subDepartment in getChildDepartments"
-                :key="subDepartment.id"
-                :department="subDepartment"
+                    v-if="showChildren"
+                    v-for="subDepartment in getChildDepartments"
+                    :key="subDepartment.id"
+                    :department="subDepartment"
             />
         </v-list-item>
         <v-list-item v-else>
+            <v-icon
+                    size="medium"
+                    color="blue-lighten-2"
+                    icon="mdi-open-in-app"
+                    class="text-center mx-1"
+            ></v-icon>
             <router-link :to="`/department/id`">{{ department.name }}</router-link>
         </v-list-item>
     </v-list>
@@ -22,17 +34,28 @@ export default {
     name: "Department",
     props: {
         department: Object,
+        // showChildren: Boolean,
+    },
+    data() {
+        return {
+            showChildren: false, // Initialize showChildren for each department
+        };
     },
     computed: {
         hasChildren() {
             return this.getChildDepartments.length > 0;
         },
-        hasParent() {
-            return this.department.parentId !== null;
-        },
         getChildDepartments() {
             const departmentStore = useDepartmentStore();
             return departmentStore.departments.filter(dept => dept.parentId === this.department.id);
+        },
+    },
+    methods: {
+        toggleChildren() {
+            if (this.hasChildren) {
+                this.showChildren = !this.showChildren;
+                // this.$emit('toggle');
+            }
         },
     },
 };

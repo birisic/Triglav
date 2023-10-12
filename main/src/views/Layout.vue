@@ -2,10 +2,10 @@
   <Sidebar />
   <v-main>
     <router-view></router-view>
-      <div>
-          <h2>Departments:</h2>
-          <Department v-for="department in filteredDepartments" :key="department.name" :department="department"/>
-      </div>
+<!--      <div>-->
+<!--          <h2>Departments:</h2>-->
+<!--          <Department v-for="department in filteredDepartments" :key="department.name" :department="department"/>-->
+<!--      </div>-->
   </v-main>
 </template>
 

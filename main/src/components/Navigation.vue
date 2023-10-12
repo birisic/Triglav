@@ -18,53 +18,61 @@
       v-model="drawer"
       :rail="rail"
       permanent
-      @click="rail = false"
     >
-      <v-list-item
-        prepend-avatar="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/dwcghojy1momfcbkb7mi"
-        title="Povio"
-        nav
-      >
-        <template v-slot:append>
-          <v-btn
-            variant="text"
-            icon="mdi-chevron-left"
-            @click.stop="rail = !rail"
-          ></v-btn>
-        </template>
-      </v-list-item>
+<!--        @click="rail = false"-->
+<!--      <v-list-item-->
+<!--        prepend-avatar="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/dwcghojy1momfcbkb7mi"-->
+<!--        title="Povio"-->
+<!--        nav-->
+<!--      >-->
+<!--        <template v-slot:append>-->
+<!--          <v-btn-->
+<!--            variant="text"-->
+<!--            icon="mdi-chevron-left"-->
+<!--            @click.stop="rail = !rail"-->
+<!--          ></v-btn>-->
+<!--        </template>-->
+<!--      </v-list-item>-->
 
-      <v-divider></v-divider>
+<!--      <v-divider></v-divider>-->
+        <v-list density="compact" nav>
+            <v-list-group value="Povio">
+                <template v-slot:activator="{ props }">
+                    <v-list-item v-bind="props" title="Povio" @click.stop="rail = !rail"></v-list-item>
+                </template>
+                <Department v-for="department in filteredDepartments" :key="department.name" :department="department"/>
+            </v-list-group>
+        </v-list>
 
-      <v-list density="compact" nav>
-        <v-list-group value="Support">
-          <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="Support"></v-list-item>
-          </template>
+<!--              <v-list density="compact" nav>-->
+<!--        <v-list-group value="Support">-->
+<!--          <template v-slot:activator="{ props }">-->
+<!--            <v-list-item v-bind="props" title="Support"></v-list-item>-->
+<!--          </template>-->
 
-          <v-list-item
-            v-for="([title, icon], i) in supportArray"
-            :key="i"
-            :value="title"
-            :title="title"
-            :prepend-icon="icon"
-          ></v-list-item>
-        </v-list-group>
+<!--          <v-list-item-->
+<!--            v-for="([title, icon], i) in supportArray"-->
+<!--            :key="i"-->
+<!--            :value="title"-->
+<!--            :title="title"-->
+<!--            :prepend-icon="icon"-->
+<!--          ></v-list-item>-->
+<!--        </v-list-group>-->
 
-        <v-list-group value="Delivery">
-          <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="Delivery"></v-list-item>
-          </template>
+<!--        <v-list-group value="Delivery">-->
+<!--          <template v-slot:activator="{ props }">-->
+<!--            <v-list-item v-bind="props" title="Delivery"></v-list-item>-->
+<!--          </template>-->
 
-          <v-list-item
-            v-for="([title, icon], i) in deliveryArray"
-            :key="i"
-            :value="title"
-            :title="title"
-            :prepend-icon="icon"
-          ></v-list-item>
-        </v-list-group>
-      </v-list>
+<!--          <v-list-item-->
+<!--            v-for="([title, icon], i) in deliveryArray"-->
+<!--            :key="i"-->
+<!--            :value="title"-->
+<!--            :title="title"-->
+<!--            :prepend-icon="icon"-->
+<!--          ></v-list-item>-->
+<!--        </v-list-group>-->
+<!--      </v-list>-->
     </v-navigation-drawer>
 
     <!-- second navigation for notes - secondary -->
@@ -104,10 +112,13 @@
 </template>
 
 <script>
+import { useDepartmentStore } from "@/stores/DepartmentStore";
+import Department from "@/components/Department.vue";
+
 export default {
   name: "Navigation",
 
-  components: {},
+  components: {Department},
 
   computed: {
     filter() {
@@ -115,6 +126,14 @@ export default {
         ? (item, search, textKey) => item[textKey].indexOf(search) > -1
         : undefined;
     },
+      departmentStore() {
+          // Access your Pinia store in the computed property
+          return useDepartmentStore();
+      },
+      filteredDepartments() {
+          // Filter the departments with parentId equal to null
+          return this.departmentStore.departments.filter((department) => department.parentId === null);
+      },
   },
 
   methods: {
@@ -125,6 +144,10 @@ export default {
       const userNote = item.srcElement;
       console.log(userNote);
     },
+      // handleToggleChildren(toggle) {
+      //     // Update 'showChildren' in the parent component
+      //     this.showChildren = toggle;
+      // },
   },
 
   data: () => ({
