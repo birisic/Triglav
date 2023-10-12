@@ -1,9 +1,9 @@
 <template>
     <v-list density="compact" nav>
-        <v-list-item v-if="hasChildren" @click="toggleChildren()">
+        <v-list-item v-if="hasChildren" @click.stop="toggleChildren()">
             <v-icon
                     size="medium"
-                    color="blue-lighten-2"
+                    color="grey-darken-2"
                     :icon="showChildren ? 'mdi-folder-open' : 'mdi-folder'"
                     class="text-center"
             ></v-icon>
@@ -18,7 +18,7 @@
         <v-list-item v-else>
             <v-icon
                     size="medium"
-                    color="blue-lighten-2"
+                    color="grey-darken-2"
                     icon="mdi-open-in-app"
                     class="text-center mx-1"
             ></v-icon>
@@ -38,7 +38,7 @@ export default {
     },
     data() {
         return {
-            showChildren: false, // Initialize showChildren for each department
+            // showChildren: false, // Initialize showChildren for each department
         };
     },
     computed: {
@@ -49,13 +49,25 @@ export default {
             const departmentStore = useDepartmentStore();
             return departmentStore.departments.filter(dept => dept.parentId === this.department.id);
         },
+        showChildren() {
+            return useDepartmentStore().getShowChildren(this.department.id);
+            // get() {
+            //     // Retrieve the 'showChildren' state from the store's showChildrenMap
+            //     return useDepartmentStore().showChildrenMap.get(this.department.id) || false;
+            // },
+            // set(value) {
+            //     // Update the 'showChildren' state in the store's showChildrenMap
+            //     useDepartmentStore().showChildrenMap.set(this.department.idx`, value);
+            // },
+        },
     },
     methods: {
         toggleChildren() {
-            if (this.hasChildren) {
-                this.showChildren = !this.showChildren;
-                // this.$emit('toggle');
-            }
+            useDepartmentStore().toggleShowChildren(this.department.id);
+            // if (this.hasChildren) {
+            //     this.showChildren = !this.showChildren;
+            //     // this.$emit('toggle');
+            // }
         },
     },
 };
