@@ -14,7 +14,7 @@
   <!-- left navigation (main) - primary -->
 
   <div>
-    <v-navigation-drawer v-model="drawer" :rail="rail" permanent>
+    <v-navigation-drawer v-model="drawer" :rail="rail" permanent width="220">
       <v-list density="compact" class="mt-2">
         <v-list-group value="Povio">
           <template v-slot:activator="{ props }">

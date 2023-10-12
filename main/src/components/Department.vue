@@ -18,11 +18,11 @@
     <v-list-item v-else>
       <v-icon
         size="medium"
-        color="grey-darken-2"
+        color="blue-darken-2"
         icon="mdi-open-in-app"
         class="text-center mx-1"
       ></v-icon>
-      <router-link @click="changeActiveDepartment(department.id)" :to="`/show-post/`+department.postIds[0]">{{ department.name }}</router-link>
+      <router-link class="text-blue-darken-2" @click="changeActiveDepartment(department.id)" :to="`/show-post/`+department.postIds[0]">{{ department.name }}</router-link>
     </v-list-item>
   </v-list>
 </template>

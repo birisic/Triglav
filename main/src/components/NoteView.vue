@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="justify-center">
-      <v-col :cols="11" class="elevation-2 my-16">
+      <v-col :cols="11" class="elevation-2 my-16 bg-white">
         <div class="custom--flex">
           <h1>{{ post.title ? post.title : "Default title" }}</h1>
 

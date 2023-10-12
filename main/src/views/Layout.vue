@@ -1,6 +1,6 @@
 <template>
   <Sidebar />
-  <v-main>
+  <v-main class="mb-bg-color">
     <router-view></router-view>
 <!--      <div>-->
 <!--          <h2>Departments:</h2>-->
@@ -32,3 +32,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mb-bg-color {
+    background-color: #f6f6f6 !important;
+}
+</style>
