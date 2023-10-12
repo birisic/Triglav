@@ -37,7 +37,7 @@
 
     <v-navigation-drawer>
       <v-card class="mx-auto" max-width="400">
-        <v-toolbar color="gray">
+        <v-toolbar color="blue">
           <v-btn variant="text" icon="mdi-menu"></v-btn>
 
           <v-toolbar-title>Overview</v-toolbar-title>
@@ -51,17 +51,25 @@
           hide-details
         ></v-text-field>
 
-         <v-list>
-             <v-list-item v-for="item in items" :key="item.id">
-                 <div class="post-container" :data-id="item.id">
-                     <router-link :to="'/show-post/' + item.id" class="text-decoration-none">
-                         <h3 class="text-black">{{ item.title }}</h3>
-                         <p class="text-grey-darken-1">{{ item.author }}</p>
-                         <p class="text-black">{{ item.desc }}</p>
-                     </router-link>
-                 </div>
-             </v-list-item>
-         </v-list>
+        <v-list item-props lines="three">
+          <v-list-item
+            class="custom--class"
+            v-for="item in items"
+            :key="item.id"
+          >
+            <div class="post-container" :data-id="item.id">
+              <router-link
+                :to="'/show-post/' + item.id"
+                class="text-decoration-none"
+              >
+                <h3 class="text-black">{{ item.title }}</h3>
+                <p class="text-blue-darken-2">{{ item.author }}</p>
+                <p class="text-black ellipsis-text">{{ item.desc }}</p>
+              </router-link>
+            </div>
+            <v-divider color="blue-darken-4" inset></v-divider>
+          </v-list-item>
+        </v-list>
       </v-card>
     </v-navigation-drawer>
   </div>
@@ -129,5 +137,16 @@ export default {
 <style>
 html {
   font-family: "Instrument Sans", sans-serif !important;
+}
+
+.custom--class {
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.ellipsis-text {
+  white-space: nowrap; /* Prevent line breaks in the text */
+  text-overflow: ellipsis; /* Show an ellipsis (...) for clipped text */
+  overflow: hidden; /* Hide the overflowed text */
 }
 </style>
