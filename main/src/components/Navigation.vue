@@ -38,7 +38,7 @@
     <v-navigation-drawer>
       <v-card class="mx-auto" max-width="400">
         <v-toolbar color="blue">
-          <v-btn variant="text" icon="mdi-menu"></v-btn>
+          <v-btn :to="'/'" variant="text" icon="mdi-home"></v-btn>
 
           <v-toolbar-title>Overview</v-toolbar-title>
 

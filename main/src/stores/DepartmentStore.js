@@ -37,8 +37,22 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
       const currentValue = this.showChildrenMap.get(departmentId);
       this.showChildrenMap.set(departmentId, !currentValue);
     },
-    setActiveDepartment(departmentId){
+    setActiveDepartment(departmentId) {
       this.activeDepartment = this.departments.find(dept => departmentId === dept.id);
+    },
+    addNote(newNote) {
+      this.noteData.unshift(newNote);
+    },
+    updateNoteData(updatedNote) {
+      const updatedNoteId = updatedNote.id;
+      const indexToUpdate = this.noteData.findIndex(
+          (note) => note.id === updatedNoteId
+      );
+
+      if (indexToUpdate !== -1) {
+        // If a note with the same ID is found, update it with the provided data
+        this.noteData[indexToUpdate] = updatedNote;
       }
-  },
+    }
+  }
 });
