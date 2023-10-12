@@ -86,8 +86,37 @@ export default {
   components: { Department },
 
   created() {
-    this.items = noteData;
+    // this.items = noteData;
     // console.log(this.items);
+      // Get the selected department from the store
+      const activeDepartment = this.departmentStore.getActiveDepartment();
+
+      if (activeDepartment) {
+          // Filter noteData based on the postIds of the selected department
+          this.items = noteData.filter((item) =>
+              activeDepartment.postIds.includes(item.id)
+          );
+      } else {
+          // If no department is selected, set items to all posts
+          this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!
+      }
+  },
+  watch: {
+      // Watch for changes in the activeDepartment
+      "departmentStore.activeDepartment": {
+          immediate: true, // Trigger the watcher immediately when created
+          handler(activeDepartment) {
+              if (activeDepartment) {
+                  // Filter noteData based on the postIds of the active department
+                  this.items = noteData.filter((item) =>
+                      activeDepartment.postIds.includes(item.id)
+                  );
+              } else {
+                  // If no department is selected, set items to all posts
+                  this.items = noteData;
+              }
+          },
+      }
   },
 
   computed: {

@@ -17,7 +17,12 @@ const routes = [
     path: "/show-post/:id",
     name: "ShowPost",
     component: ShowPostPage,
-  }
+  },
+  // {
+  //   path: "/department/:id",
+  //   name: "ShowDepartment",
+  //   component: ShowDepartmentPage,
+  // }
 ];
 
 const app = createApp(App);

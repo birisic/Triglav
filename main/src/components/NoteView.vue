@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="justify-center">
-      <v-col :cols="10" class="elevation-2 my-16">
+      <v-col :cols="11" class="elevation-2 my-16">
         <h1>{{ post.title ? post.title : "Default title" }}</h1>
         <span class="text-blue-darken-2">{{
           post.author ? post.author : "Default author"
@@ -41,11 +41,8 @@ export default {
     postId: String,
   },
   mounted() {
-      console.log(this.postId)
-      console.log(parseInt(this.postId))
         let arrPost = this.getPosts(parseInt(this.postId));
         this.post = arrPost[0]
-        console.log(this.post)
   },
   watch: {
     postId(newPostId, oldPostId) {
@@ -54,7 +51,6 @@ export default {
         let arrPost = this.getPosts(postId);
         this.post = arrPost[0];
       // }
-      console.log(this.post);
     },
   },
   methods: {

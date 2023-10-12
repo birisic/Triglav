@@ -22,7 +22,7 @@
         icon="mdi-open-in-app"
         class="text-center mx-1"
       ></v-icon>
-      <router-link :to="`/department/id`">{{ department.name }}</router-link>
+      <router-link @click="changeActiveDepartment(department.id)" :to="`/show-post/`+department.postIds[0]">{{ department.name }}</router-link>
     </v-list-item>
   </v-list>
 </template>
@@ -61,7 +61,7 @@ export default {
       //     // Update the 'showChildren' state in the store's showChildrenMap
       //     useDepartmentStore().showChildrenMap.set(this.department.idx`, value);
       // },
-    },
+    }
   },
   methods: {
     toggleChildren() {
@@ -71,6 +71,9 @@ export default {
       //     // this.$emit('toggle');
       // }
     },
+      changeActiveDepartment(id) {
+        useDepartmentStore().setActiveDepartment(id);
+    }
   },
 };
 </script>
