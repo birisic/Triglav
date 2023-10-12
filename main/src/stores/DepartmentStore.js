@@ -18,7 +18,7 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
     },
 
     getNoteData: (state) => (noteId) => {
-      return state.noteData.filter(note => note.id === parseInt(noteId));
+      return state.noteData.filter((note) => note.id === parseInt(noteId));
     },
   },
   //actions - methods
@@ -26,6 +26,10 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
     toggleShowChildren(departmentId) {
       const currentValue = this.showChildrenMap.get(departmentId);
       this.showChildrenMap.set(departmentId, !currentValue);
+    },
+
+    addNote(newNote) {
+      this.noteData.unshift(newNote);
     },
   },
 });
