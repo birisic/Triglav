@@ -27,7 +27,8 @@
   {
     "id": 6,
     "parentId": 5,
-    "name": "Testing"
+    "name": "Testing",
+    "postIds": [9,10]
   },
   {
     "id": 7,

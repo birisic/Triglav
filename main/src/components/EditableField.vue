@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="justify-center">
-      <v-col :cols="10" class="elevation-2 my-16 h-100">
+      <v-col :cols="11" class="elevation-2 my-16 h-100">
         <v-form class="h-100">
           <v-text-field
             :counter="10"
@@ -28,7 +28,7 @@
             v-model="desc"
           ></v-textarea>
           <v-btn @click="handleClick" class="position-fixed">{{
-            buttonLabel
+            "Add Post"
           }}</v-btn>
         </v-form>
         <!--                <div class="h-screen w-100">-->
@@ -63,9 +63,9 @@ export default {
   },
 
   computed: {
-    buttonLabel() {
-      return this.content === "" ? "Add new" : "Save";
-    },
+    // buttonLabel() {
+    //   return this.content === "" ? "Add new" : "Save";
+    // },
   },
   methods: {
     handleClick() {

@@ -1,7 +1,7 @@
 <template>
   <v-app-bar>
     <div class="d-flex justify-space-between align-center w-100 px-4">
-      <h1>povio</h1>
+      <h1>TRIGLAV</h1>
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
@@ -15,12 +15,12 @@
 
   <div>
     <v-navigation-drawer v-model="drawer" :rail="rail" permanent>
-      <v-list density="compact" nav>
+      <v-list density="compact" class="mt-2">
         <v-list-group value="Povio">
           <template v-slot:activator="{ props }">
             <v-list-item
               v-bind="props"
-              title="Povio"
+              title="Povio's structure"
               @click.stop="rail = !rail"
             ></v-list-item>
           </template>
@@ -38,18 +38,21 @@
     <v-navigation-drawer>
       <v-card class="mx-auto" max-width="400">
         <v-toolbar color="blue">
-          <v-btn :to="'/'" variant="text" icon="mdi-home"></v-btn>
+            <div class="d-flex justify-center w-100 px-2">
+                <div class="d-flex justify-center me-2">
+                    <router-link :to="'/'" class="w-100 h-100 d-flex justify-center align-center text-decoration-none"><v-icon icon="mdi-home" color="white"></v-icon></router-link>
+                </div>
 
-          <v-toolbar-title>Overview</v-toolbar-title>
+                <v-text-field
+                        v-model="search"
+                        label="Search"
+                        single-line
+                        hide-details
 
+                ></v-text-field>
+            </div>
           <v-spacer></v-spacer>
         </v-toolbar>
-        <v-text-field
-          v-model="search"
-          label="Search"
-          single-line
-          hide-details
-        ></v-text-field>
 
         <v-list item-props lines="three">
           <v-list-item
@@ -98,7 +101,7 @@ export default {
           );
       } else {
           // If no department is selected, set items to all posts
-          this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!
+          this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
       }
   },
   watch: {
@@ -113,7 +116,7 @@ export default {
                   );
               } else {
                   // If no department is selected, set items to all posts
-                  this.items = noteData;
+                  this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
               }
           },
       }
