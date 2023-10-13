@@ -10,7 +10,8 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
       departments,
       noteData,
       showChildrenMap: new Map(),
-      activeDepartment: null
+      activeDepartment: null,
+      loginStatus: false,
     };
   },
   //getters - computed properties
@@ -20,16 +21,21 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
     },
 
     getNoteData: (state) => (noteId) => {
-      return state.noteData.filter(note => note.id === parseInt(noteId));
+      return state.noteData.filter((note) => note.id === parseInt(noteId));
     },
 
     getDepartmentPosts: (state) => (postIds) => {
-      return state.noteData.filter(note => postIds.includes(note.id));
+      return state.noteData.filter((note) => postIds.includes(note.id));
     },
 
     getActiveDepartment: (state) => () => {
       return state.activeDepartment;
-    }
+    },
+
+    getLoginStatus: (state) => (userStatus) => {
+      console.log(userStatus);
+      return (state.loginStatus = userStatus);
+    },
   },
   //actions - methods
   actions: {
@@ -38,7 +44,9 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
       this.showChildrenMap.set(departmentId, !currentValue);
     },
     setActiveDepartment(departmentId) {
-      this.activeDepartment = this.departments.find(dept => departmentId === dept.id);
+      this.activeDepartment = this.departments.find(
+        (dept) => departmentId === dept.id
+      );
     },
     addNote(newNote) {
       this.noteData.unshift(newNote);
@@ -46,13 +54,13 @@ export const useDepartmentStore = defineStore("DepartmentStore", {
     updateNoteData(updatedNote) {
       const updatedNoteId = updatedNote.id;
       const indexToUpdate = this.noteData.findIndex(
-          (note) => note.id === updatedNoteId
+        (note) => note.id === updatedNoteId
       );
 
       if (indexToUpdate !== -1) {
         // If a note with the same ID is found, update it with the provided data
         this.noteData[indexToUpdate] = updatedNote;
       }
-    }
-  }
+    },
+  },
 });
