@@ -1,62 +1,98 @@
 [
   {
     "id": 1,
-    "title": "Oui oui",
-    "author": "Sandra Adams",
-    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae vestibulum nulla, in aliquam nulla. Quisque justo ligula, auctor non blandit ac, elementum vel arcu. Donec et dapibus magna. Aliquam eu ex sed leo tristique venenatis nec vel lorem. Duis efficitur ut est at consequat. Aliquam a tristique felis, vitae tristique tellus. Quisque mollis fermentum nisl, efficitur lacinia elit tincidunt vel. Duis at orci quis risus ultrices viverra. Ut vulputate posuere lacinia. Donec velit tellus, porttitor ac elementum sit amet, mattis sed odio. Phasellus vehicula nisi risus. Etiam quis turpis fermentum, congue nunc eget, hendrerit metus. Nulla luctus justo dui, in dapibus mauris scelerisque et. Cras iaculis ultrices odio, ut convallis felis porttitor et. Praesent pretium dui in ante sodales, at vehicula neque pellentesque. Fusce interdum nibh ac elit sagittis tempus.\n\nPhasellus lacus justo, malesuada quis risus sit amet, viverra consectetur magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eu sapien sem. Suspendisse malesuada euismod nisl, quis tincidunt nisl accumsan in. Pellentesque tempor tincidunt elit sed ultricies. Mauris auctor augue porttitor, aliquet ex eget, facilisis risus. Cras tristique et tellus ut varius. Nam vel dui sit amet metus condimentum dictum. Donec rutrum sollicitudin porttitor. Morbi sed mauris mauris. Praesent semper accumsan tortor, nec sollicitudin turpis viverra vitae.\n\nClass aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce blandit neque at mauris sollicitudin convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam blandit, elit laoreet commodo fermentum, ligula augue fringilla est, quis faucibus justo turpis sit amet magna. Morbi finibus felis metus, sit amet viverra neque venenatis quis. Phasellus ultrices egestas varius. Aenean tincidunt erat vel tellus venenatis ullamcorper. Nullam mollis mauris sed fermentum pulvinar. Mauris commodo molestie velit ut aliquam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ultricies congue ipsum vitae venenatis. Mauris id est consectetur, rutrum purus nec, efficitur risus. Duis aliquet sapien quam, at lacinia nisl interdum venenatis.\n\nUt nec justo orci. Cras quis eros risus. Nam accumsan erat a felis efficitur feugiat. Aenean elementum tellus ac ipsum pellentesque, in pulvinar purus semper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi at placerat erat. Nullam fringilla, tellus non elementum auctor, libero turpis dapibus eros, ut venenatis erat dolor in leo. Nunc blandit fringilla enim, id volutpat lectus ullamcorper at. Donec maximus mi interdum finibus tempor. Nulla a vestibulum ex. Quisque lobortis ornare elit vel mattis. Nullam venenatis lacus eu risus ornare, sit amet placerat sapien maximus. Sed gravida placerat odio eget fermentum. Etiam vehicula eros odio, sed ultrices nibh viverra eu.\n\nMaecenas luctus quam vel leo mollis suscipit. Sed ac euismod turpis. Integer a auctor quam, sit amet vestibulum elit. Donec at velit ac sapien lobortis finibus et vitae enim. Maecenas a odio et magna accumsan auctor. Maecenas lacus lectus, auctor sed tempus eget, tristique eget ex. Sed interdum pretium quam et pulvinar. Sed gravida commodo ex."
+    "title": "Slow Page Load Times in a Vue.js Application",
+    "author": "Stella",
+    "desc": "To address slow page load times, implement code splitting and lazy loading using Vue Router's dynamic imports. This will break down your application into smaller modules and load components and routes only when needed, significantly improving load times and user experience."  
   },
   {
     "id": 2,
-    "title": "Notes for JS",
+    "title": "Cross-Browser Compatibility Issues",
     "author": "Martin",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "desc": "Ensure your Vue.js application is compatible with all major browsers by using tools like Babel and Autoprefixer to transpile and prefix CSS properties. Regularly test your app in different browsers and apply browser-specific fixes when needed."
   },
   {
     "id": 3,
-    "title": "C# notes",
-    "author": "Zan",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "title": "Slow Database Queries",
+    "author": "Leon",
+    "desc": "To address slow database queries in Laravel, optimize your queries using Eloquent's query builder, add proper indexes to your database tables, and consider caching to reduce database load. Regularly monitor the query performance using Laravel Debugbar or other profiling tools."
   },
   {
     "id": 4,
-    "title": "Figma",
-    "author": "Tin",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "title": "Security Vulnerabilities in Authentication",
+    "author": "Tamara",
+    "desc": "Ensure the security of your Laravel application by implementing best practices for authentication. Utilize Laravel's built-in features like Passport for API authentication and Sanctum for SPA authentication. Regularly update your packages to patch security vulnerabilities."
   },
   {
     "id": 5,
-    "title": "Oui oui",
-    "author": "Sandra Adams",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "title": "Inconsistent User Interface (UI) Design",
+    "author": "Sandra",
+    "desc": "Maintain design consistency across your application by creating a style guide or design system. Ensure that fonts, colors, button styles, and other UI elements are consistently applied. Conduct regular design reviews and provide design assets to your development team to ensure uniformity."
   },
   {
     "id": 6,
-    "title": "Oui oui",
-    "author": "Sandra Adams",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "title": "Confusing User Flows",
+    "author": "Sandra",
+    "desc": "Improve user flows by conducting usability testing and gathering user feedback. Use tools like user flow diagrams and wireframes to map out user journeys. Make necessary adjustments to streamline the user experience and reduce confusion."
   },
   {
     "id": 7,
-    "title": "Oui oui",
-    "author": "Sandra Adams",
-    "desc": "Do you have Paris recommendations? Have you ever been?"
+    "title": "Resource Allocation Issues",
+    "author": "Sandra",
+    "desc": "To address resource allocation challenges, implement a robust project management tool that allows you to monitor resource availability and allocate them efficiently. Regularly review resource allocation to ensure teams have the necessary skills and time for their tasks."
   },
   {
     "id": 8,
-    "title": "Note for Department",
-    "author": "Sandra Adams",
-    "desc": "This a super creative description text"
+    "title": "Lack of Project Documentation",
+    "author": "Sandra",
+    "desc": "To address the lack of project documentation, establish a standardized document management system. Ensure that project plans, reports, and other essential documents are consistently created, stored, and updated. Encourage team members to document their work to facilitate knowledge transfer."
   },
   {
     "id": 9,
-    "title": "Note for Testing Department",
-    "author": "Sandra Adams",
-    "desc": "This a super creative description text"
+    "title": "Inadequate Test Coverage",
+    "author": "Sandra",
+    "desc": "To address inadequate test coverage, review and improve test plans and strategies. Incorporate a combination of manual and automated testing to cover a broader range of scenarios. Consider exploratory testing to discover unforeseen issues."
   },
   {
     "id": 10,
-    "title": "Note for Testing Department",
+    "title": "Ineffective Bug Tracking and Reporting",
     "author": "Sandra Adams",
-    "desc": "This a super creative description text"
+    "desc": "Improve bug tracking and reporting by implementing a bug tracking system or using a dedicated tool. Establish clear guidelines for reporting, categorizing, and prioritizing issues. Regularly update the status of reported bugs and facilitate communication between testing and development teams."
+  },
+  {
+    "id": 11,
+    "title": "Memory Leaks in Vue Components",
+    "author": "Martin",
+    "desc": "Address memory leaks by implementing proper component lifecycle management. Use Vue's lifecycle hooks to clean up resources, including event listeners, when a component is destroyed. Implement tools like Chrome DevTools to analyze memory usage."
+  },
+  {
+    "id": 12,
+    "title": "Slow Initial Page Load Times",
+    "author": "Antea",
+    "desc": "To improve slow initial page load times, optimize your Vue.js application's bundle size. Use code splitting and lazy loading for components and routes, so only necessary code is loaded initially. Minimize the use of large external libraries."
+  },
+  {
+    "id": 13,
+    "title": "SEO Optimization Challenges",
+    "author": "Antea",
+    "desc": "Address SEO optimization challenges by implementing server-side rendering (SSR) with Nuxt.js, a Vue.js framework. SSR pre-renders your Vue components on the server, making your site more search engine-friendly."  
+  },
+  {
+    "id": 14,
+    "title": "Accessibility Compliance",
+    "author": "Antea",
+    "desc": "To ensure your Vue.js application is accessible to all users, including those with disabilities, conduct regular accessibility audits and implement changes accordingly. Use ARIA roles, provide alt text for images, and ensure keyboard navigation and screen reader compatibility. Utilize testing tools like Axe or Lighthouse to identify and resolve accessibility issues."  
+  },
+  {
+    "id": 15,
+    "title": "Slow Application Performance",
+    "author": "Antea",
+    "desc": "If you encounter slow application performance in Laravel, consider optimizing your code and database queries. Profile your application using tools like Laravel Telescope or external profiling tools to identify bottlenecks and make the necessary improvements. Caching can also be effective for frequently accessed data."  
+  },
+  {
+    "id": 16,
+    "title": "Security Vulnerabilities",
+    "author": "Martin",
+    "desc": "To address security vulnerabilities in your Laravel application, ensure that you're regularly updating your Laravel version and its dependencies. Implement security best practices such as input validation, authentication, and authorization. Additionally, use Laravel-specific security features like CSRF protection and middleware to secure your application against common threats."
   }
 ]
