@@ -48,8 +48,10 @@
                         label="Search"
                         single-line
                         hide-details
-
                 ></v-text-field>
+                <div class="d-flex justify-center ms-2">
+                    <v-icon icon="mdi-magnify" @click="filterSearch" class="w-100 h-100 d-flex justify-center align-center text-decoration-none"></v-icon>
+                </div>
             </div>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -65,9 +67,9 @@
                 :to="'/show-post/' + item.id"
                 class="text-decoration-none"
               >
-                <h3 class="text-black">{{ item.title }}</h3>
-                <p class="text-blue-darken-2">{{ item.author }}</p>
-                <p class="text-black ellipsis-text">{{ item.desc }}</p>
+                <h4 class="text-black">{{ item.title }}</h4>
+                <p class="text-blue-darken-2 text-subtitle-1">{{ item.author }}</p>
+                <p class="text-grey-darken-1 ellipsis-text text-subtitle-2">{{ item.desc }}</p>
               </router-link>
             </div>
             <v-divider color="blue-darken-4" inset></v-divider>
@@ -119,6 +121,21 @@ export default {
                   this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
               }
           },
+      },
+      search(newSearch, oldSearch) {
+          if (this.searchTimeout) {
+              clearTimeout(this.searchTimeout); // Clear previous timeout
+          }
+
+          // Set a new timeout to trigger the search after 1 second of typing
+          this.searchTimeout = setTimeout(() => {
+              this.filterSearch();
+          }, 1000);
+
+          // Show original items when the search input is empty
+          if (newSearch === "") {
+              this.filterSearch();
+          }
       }
   },
 
@@ -137,31 +154,26 @@ export default {
       return this.departmentStore.departments.filter(
         (department) => department.parentId === null
       );
-    },
+    }
   },
 
   methods: {
-    // clickList(item) {
-    //   // Get the Pinia store instance
-    //   const departmentStore = useDepartmentStore();
-    //
-    //   console.log("yp");
-    //   console.log("Clicked item data:", item.srcElement);
-    //
-    //   const userNote = item.srcElement;
-    //   console.log(item);
-    //
-    //   // Update the data in the Pinia store by calling an action (e.g., updateData)
-    //   // departmentStore.getNoteData(userNote);
-    // },
+      filterSearch() {
+          const searchString = this.search.toLowerCase().trim();
+          // Filter items by title based on the search input
+          this.items = this.items.filter((item) =>
+              item.title.toLowerCase().includes(searchString)
+          );
+      },
   },
 
   data: () => ({
     drawer: true,
-    search: null,
+    search: '',
     caseSensitive: true,
     rail: true,
     items: [],
+    searchTimeout: null
   }),
 };
 </script>
