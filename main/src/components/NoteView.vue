@@ -14,7 +14,9 @@
           post.author ? post.author : "Default author"
         }}</span>
 
-        <p class="r-16">Last edited: 10.10.2023</p>
+        <p class="r-16">
+          Last edited: {{ editedLastDate ? editedLastDate : "Not edited yet." }}
+        </p>
 
         <v-divider color="blue-darken-4"></v-divider>
         <div class="custom-margin">
@@ -49,7 +51,7 @@ export default {
   data() {
     return {
       editing: false, // Initially, not in edit mode
-
+      editedLastDate: null,
       post: {
         title: noteData[0].title,
         author: noteData[0].author,
@@ -81,6 +83,10 @@ export default {
 
     toggleEditMode() {
       this.editing = !this.editing;
+
+      // get the date for last edited
+
+      this.editedLastDate = new Date().toLocaleString();
 
       // Pass the data into the store state
       const departmentStore = useDepartmentStore();

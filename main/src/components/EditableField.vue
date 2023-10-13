@@ -27,9 +27,12 @@
             placeholder="Enter your note for a post..."
             v-model="desc"
           ></v-textarea>
-          <v-btn @click="handleClick" class="position-fixed" color="blue-darken-2">{{
-            "Add Post"
-          }}</v-btn>
+          <v-btn
+            @click="handleClick"
+            class="position-fixed"
+            color="blue-darken-2"
+            >{{ "Add Post" }}</v-btn
+          >
         </v-form>
         <!--                <div class="h-screen w-100">-->
         <!--                  <textarea-->

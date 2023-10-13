@@ -5,8 +5,6 @@
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-          title="Sandra Adams"
-          subtitle="sandra_a88@gmailcom"
         ></v-list-item>
       </v-list>
     </div>
@@ -38,21 +36,29 @@
     <v-navigation-drawer>
       <v-card class="mx-auto" max-width="400">
         <v-toolbar color="blue">
-            <div class="d-flex justify-center w-100 px-2">
-                <div class="d-flex justify-center me-2">
-                    <router-link :to="'/'" class="w-100 h-100 d-flex justify-center align-center text-decoration-none"><v-icon icon="mdi-home" color="white"></v-icon></router-link>
-                </div>
-
-                <v-text-field
-                        v-model="search"
-                        label="Search"
-                        single-line
-                        hide-details
-                ></v-text-field>
-                <div class="d-flex justify-center ms-2">
-                    <v-icon icon="mdi-magnify" @click="filterSearch" class="w-100 h-100 d-flex justify-center align-center text-decoration-none"></v-icon>
-                </div>
+          <div class="d-flex justify-center w-100 px-2">
+            <div class="d-flex justify-center me-2">
+              <router-link
+                :to="'/'"
+                class="w-100 h-100 d-flex justify-center align-center text-decoration-none"
+                ><v-icon icon="mdi-home" color="white"></v-icon
+              ></router-link>
             </div>
+
+            <v-text-field
+              v-model="search"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+            <div class="d-flex justify-center ms-2">
+              <v-icon
+                icon="mdi-magnify"
+                @click="filterSearch"
+                class="w-100 h-100 d-flex justify-center align-center text-decoration-none"
+              ></v-icon>
+            </div>
+          </div>
           <v-spacer></v-spacer>
         </v-toolbar>
 
@@ -68,8 +74,12 @@
                 class="text-decoration-none"
               >
                 <h4 class="text-black">{{ item.title }}</h4>
-                <p class="text-blue-darken-2 text-subtitle-1">{{ item.author }}</p>
-                <p class="text-grey-darken-1 ellipsis-text text-subtitle-2">{{ item.desc }}</p>
+                <p class="text-blue-darken-2 text-subtitle-1">
+                  {{ item.author }}
+                </p>
+                <p class="text-grey-darken-1 ellipsis-text text-subtitle-2">
+                  {{ item.desc }}
+                </p>
               </router-link>
             </div>
             <v-divider color="blue-darken-4" inset></v-divider>
@@ -93,50 +103,51 @@ export default {
   created() {
     // this.items = noteData;
     // console.log(this.items);
-      // Get the selected department from the store
-      const activeDepartment = this.departmentStore.getActiveDepartment();
+    // Get the selected department from the store
+    const activeDepartment = this.departmentStore.getActiveDepartment();
 
-      if (activeDepartment) {
-          // Filter noteData based on the postIds of the selected department
-          this.items = noteData.filter((item) =>
-              activeDepartment.postIds.includes(item.id)
-          );
-      } else {
-          // If no department is selected, set items to all posts
-          this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
-      }
+    if (activeDepartment) {
+      // Filter noteData based on the postIds of the selected department
+      this.items = noteData.filter((item) =>
+        activeDepartment.postIds.includes(item.id)
+      );
+    } else {
+      // If no department is selected, set items to all posts
+      this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
+    }
   },
   watch: {
-      // Watch for changes in the activeDepartment
-      "departmentStore.activeDepartment": {
-          immediate: true, // Trigger the watcher immediately when created
-          handler(activeDepartment) {
-              if (activeDepartment) {
-                  // Filter noteData based on the postIds of the active department
-                  this.items = noteData.filter((item) =>
-                      activeDepartment.postIds.includes(item.id)
-                  );
-              } else {
-                  // If no department is selected, set items to all posts
-                  this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
-              }
-          },
+    // Watch for changes in the activeDepartment
+    "departmentStore.activeDepartment": {
+      immediate: true, // Trigger the watcher immediately when created
+      handler(activeDepartment) {
+        if (activeDepartment) {
+          // Filter noteData based on the postIds of the active department
+          this.items = noteData.filter((item) =>
+            activeDepartment.postIds.includes(item.id)
+          );
+        } else {
+          // If no department is selected, set items to all posts
+          this.items = noteData; //THIS SHOULD BE SET TO THE USER DEPARTMENT'S POSTS!,
+        }
       },
-      search(newSearch, oldSearch) {
-          if (this.searchTimeout) {
-              clearTimeout(this.searchTimeout); // Clear previous timeout
-          }
-
-          // Set a new timeout to trigger the search after 1 second of typing
-          this.searchTimeout = setTimeout(() => {
-              this.filterSearch();
-          }, 1000);
-
-          // Show original items when the search input is empty
-          if (newSearch === "") {
-              this.filterSearch();
-          }
+    },
+    search(newSearch, oldSearch) {
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout); // Clear previous timeout
       }
+
+      // Set a new timeout to trigger the search after 1 second of typing
+      this.searchTimeout = setTimeout(() => {
+        this.filterSearch();
+      }, 1000);
+
+      // Show original items when the search input is empty
+      if (newSearch === "") {
+        this.items = noteData;
+        // this.filterSearch();
+      }
+    },
   },
 
   computed: {
@@ -154,26 +165,28 @@ export default {
       return this.departmentStore.departments.filter(
         (department) => department.parentId === null
       );
-    }
+    },
   },
 
   methods: {
-      filterSearch() {
-          const searchString = this.search.toLowerCase().trim();
-          // Filter items by title based on the search input
-          this.items = this.items.filter((item) =>
-              item.title.toLowerCase().includes(searchString)
-          );
-      },
+    filterSearch() {
+      const searchString = this.search.toLowerCase().trim();
+      // Filter items by title based on the search input
+      this.items = this.items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchString) ||
+          item.author.toLowerCase().includes(searchString)
+      );
+    },
   },
 
   data: () => ({
     drawer: true,
-    search: '',
+    search: "",
     caseSensitive: true,
     rail: true,
     items: [],
-    searchTimeout: null
+    searchTimeout: null,
   }),
 };
 </script>
