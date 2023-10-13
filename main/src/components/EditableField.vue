@@ -12,21 +12,26 @@
             class="w-100 mx-auto elevation-0"
             placeholder="Title"
             v-model="title"
-          ></v-text-field>
-          <v-divider></v-divider>
-          <!--        DESCRIPTION            -->
-          <v-textarea
-            :counter="10"
-            rows="30"
-            required
-            hide-details
-            bg-color="white"
-            rounded="0"
-            border="0"
-            class="w-100 mx-auto elevation-0 h-100"
-            placeholder="Enter your note for a post..."
-            v-model="desc"
-          ></v-textarea>
+            ></v-text-field>
+            <editor
+                    api-key="no-api-key"
+                    placeholder="Enter your note here..."
+                    v-model="desc"
+            />
+            <!--          <v-divider></v-divider>-->
+<!--          &lt;!&ndash;        DESCRIPTION            &ndash;&gt;-->
+<!--          <v-textarea-->
+<!--            :counter="10"-->
+<!--            rows="30"-->
+<!--            required-->
+<!--            hide-details-->
+<!--            bg-color="white"-->
+<!--            rounded="0"-->
+<!--            border="0"-->
+<!--            class="w-100 mx-auto elevation-0 h-100"-->
+<!--            placeholder="Enter your note for a post..."-->
+<!--            v-model="desc"-->
+<!--          ></v-textarea>-->
           <v-btn
             @click="handleClick"
             class="position-fixed"
@@ -34,16 +39,6 @@
             >{{ "Add Post" }}</v-btn
           >
         </v-form>
-        <!--                <div class="h-screen w-100">-->
-        <!--                  <textarea-->
-        <!--                          class="h-100 w-100"-->
-        <!--                          name="userNote"-->
-        <!--                          id="userNote"-->
-        <!--                          v-model="content"-->
-        <!--                          placeholder="Enter a note..."-->
-        <!--                  ></textarea>-->
-        <!--                    -->
-        <!--                </div>-->
       </v-col>
     </v-row>
   </v-container>
@@ -52,8 +47,14 @@
 <script>
 import { useDepartmentStore } from "@/stores/DepartmentStore";
 import noteData from "../data/noteData.json";
+import Editor from '@tinymce/tinymce-vue'
+
 
 export default {
+  name: "EditableField",
+  components: {
+      'editor': Editor
+  },
   data() {
     return {
       title: "",
@@ -75,7 +76,7 @@ export default {
       const noteTitle = this.title;
       const noteContent = this.desc; // Get the value from the textarea
       const idNumber = this.noteArray.length; // set the ID
-
+        console.log(noteContent)
       // create object to store in the json -> needs to look like this
       const newUserNote = {
         id: idNumber + 1,

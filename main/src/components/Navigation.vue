@@ -77,8 +77,7 @@
                 <p class="text-blue-darken-2 text-subtitle-1">
                   {{ item.author }}
                 </p>
-                <p class="text-grey-darken-1 ellipsis-text text-subtitle-2">
-                  {{ item.desc }}
+                <p class="text-grey-darken-1 ellipsis-text text-subtitle-2" v-html="item.desc">
                 </p>
               </router-link>
             </div>

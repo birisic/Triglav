@@ -12,7 +12,7 @@ export default {
       }
   },
   components: {
-      NoteView,
+      NoteView
   },
   mounted() {
       this.id = this.$route.params.id;
